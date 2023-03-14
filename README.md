@@ -1,3 +1,21 @@
+
+### Raúl Fernández Cortés
+
+
+Alumno ingeniería Informática de la Universidad de Jaén.
+* **Correo**: rfc00024@red.ujaen.es
+* **GitHub**: https://github.com/rfc00024
+* **Trello**: https://trello.com/invite/b/3yXWqP8s/ATTI615192b4a4421aec76d3547a34f2fd605B2CAA96/practica-3-agil
+
+
+
+
+
+
+
+
+
+
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10405477&assignment_repo_type=AssignmentRepo)
 # *Plantilla Práctica Microservicios*: descripción de la aplicación
 
