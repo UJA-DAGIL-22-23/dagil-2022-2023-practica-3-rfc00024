@@ -14,10 +14,10 @@ const faunadb = require('faunadb'),
     q = faunadb.query;
 
 const client = new faunadb.Client({
-    secret: '¿¿¿ CLAVE SECRETA EN FAUNA PARA ESTA BBDD???',
+    secret: 'fnAE_k3Lu3AAzPjz-JbvxVE3vSDlx83qEOl-jpaE',
 });
 
-const COLLECTION = "¿¿¿ COLECCION ???"
+const COLLECTION = "Jugadores"
 
 // CALLBACKS DEL MODELO
 
@@ -93,9 +93,9 @@ const CB_OTHERS = {
         try {
             CORS(res).status(200).json({
                 mensaje: "Microservicio MS Plantilla: acerca de",
-                autor: "¿¿¿ AUTOR ???",
-                email: "¿¿¿ EMAIL ???",
-                fecha: "¿¿¿ FECHA ???"
+                autor: "Raúl Fernández Cortés",
+                email: "rfc00024@red.ujaen.es",
+                fecha: "Marzo, 2023"
             });
         } catch (error) {
             CORS(res).status(500).json({ error: error.description })
