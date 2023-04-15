@@ -157,6 +157,15 @@ describe('Plantilla.imprime', function () {
 
 
 
+describe("Plantilla.pieTable ", function () {
+  it("Debe devolverse el codigo html del pie de tabla",
+      function () {
+          expect(Plantilla.pieTable()).toBe("</tbody></table>");
+      });
+});
+
+
+
   
 
 
