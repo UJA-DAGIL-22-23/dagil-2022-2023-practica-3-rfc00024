@@ -112,7 +112,94 @@ Plantilla.procesarAcercaDe = function () {
 
 
 
+
+
 Plantilla.listar = function () {
     this.recupera(this.imprime);
 }
+
+
+
+/**
+ * Pie de la tabla en la que se muestran las personas
+ * @returns Cadena con el pie de la tabla
+ */
+Plantilla.pieTable = function () {
+    return "</tbody></table>";
+}
+
+/**
+ * Crea la cabecera para mostrar la info como tabla
+ * @returns Cabecera de la tabla
+ */
+Plantilla.cabeceraTable = function () {
+    return `<table class="listado-proyectos" id="myTable">
+        <thead>
+        <th>nombreCompleto</th>
+        </thead>`;
+}
+
+/**
+ * Muestra la información de cada proyecto en un elemento TR con sus correspondientes TD
+ * @param {proyecto} p Datos del proyecto a mostrar
+ * @returns Cadena conteniendo todo el elemento TR que muestra el proyecto.
+ */
+Plantilla.cuerpoTr = function (p) {
+    const d = p.data
+    const nombre = d.nombre;
+    const apellidos = d.apellidos;
+    const nombreCompleto = nombre + " " + apellidos;
+
+    return `<tr title="${p.ref['@ref'].id}">
+    <td>${nombreCompleto}</td>
+    </tr>
+    `;
+}
+
+
+
+Plantilla.recupera = async function (callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio proyectos
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los proyectos que se han descargado
+    let vectorProyectos = null
+    if (response) {
+        vectorProyectos = await response.json()
+        callBackFn(vectorProyectos.data)
+    }
+}
+
+
+
+/**
+ * Función para mostrar en pantalla todos los proyectos que se han recuperado de la BBDD.
+ * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
+ */
+Plantilla.imprime = function (vector) {
+    vector = vector || this.datosJugadoresNulos
+    let msj = "";
+    
+    if (vector === null || vector.length === 0 || typeof vector !== "object") {
+      msj = OBJETO_VACIO;
+    } else {
+      msj += Plantilla.cabeceraTable();
+      vector.forEach(e => msj += Plantilla.cuerpoTr(e))
+      msj += Plantilla.pieTable();
+    }
+    
+    Frontend.Article.actualizar( "Listado de proyectos", msj );
+  }
+
+
 
