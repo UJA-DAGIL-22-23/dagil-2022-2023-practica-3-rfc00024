@@ -257,7 +257,6 @@ describe("Funcion imprime.Todo que muestra todos los datos de los jugadores", fu
 });
 
 
-
 describe("Plantilla.cabeceraTableTodo()", function() {
   it("Debe devolver la informacion de las distintas columnas de un jugador", function() {
     const expected = `<table class="listado-proyectos" id="myTable">
@@ -274,8 +273,34 @@ describe("Plantilla.cabeceraTableTodo()", function() {
   });
 });
 
+describe("Plantilla.cuerpoTrTodo", () => {
+  it("debe devolver un string con los datos de los jugadores en HTML", () => {
+    const proyecto = {
+      data: {
+        nombre: "nombre 1",
+        apellidos: "Apellido 1",
+        fecha_de_nacimiento: { dia: 1, mes: 1, año: 2000 },
+        participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+        Participaciones_en_eventos_a_nivel_internacional: 3,
+        numero_de_trofeos_conseguidos: 2,
+      },
+      ref: { "@ref": { id: "123456" } },
+    };
+    const expectedOutput = `<tr title="123456">
+    <td>nombre 1</td>
+    <td>Apellido 1</td>
+    <td>1/1/2000</td>
+    <td>2005,2006,2007,2009,2010,2012,2013,2014</td>
+    <td>3</td>
+    <td>2</td>
+    </tr>
+    `;
 
+    const result = Plantilla.cuerpoTrTodo(proyecto);
 
+    expect(result).toBe(expectedOutput);
+  });
+});
 
 
 
