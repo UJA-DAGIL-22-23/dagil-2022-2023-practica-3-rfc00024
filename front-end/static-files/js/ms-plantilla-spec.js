@@ -164,6 +164,38 @@ describe("Plantilla.pieTable ", function () {
       });
 });
 
+describe("Plantilla.cabeceraTable", function() {
+  it('existe la función cabeceraTable', () => {
+    expect(Plantilla.cabeceraTable).toBeDefined();
+  });
+
+  it('devuelve una cadena de texto', () => {
+    const resultado = Plantilla.cabeceraTable();
+    expect(typeof resultado).toBe('string');
+  });
+
+  it('devuelve una tabla con la clase "listado-proyectos"', () => {
+    const resultado = Plantilla.cabeceraTable();
+    expect(resultado).toContain('<table class="listado-proyectos"');
+  });
+
+  it('devuelve una tabla con la etiqueta "thead"', () => {
+    const resultado = Plantilla.cabeceraTable();
+    expect(resultado).toContain('<thead>');
+  });
+
+  it('devuelve una tabla con dos columnas', () => {
+    const resultado = Plantilla.cabeceraTable();
+    expect(resultado).toContain('<th>nombreCompleto</th>');
+  });
+
+  it('devuelve una tabla con el ID "myTable"', () => {
+    const resultado = Plantilla.cabeceraTable();
+    expect(resultado).toContain('id="myTable"');
+  });
+});
+
+
 
 
   
