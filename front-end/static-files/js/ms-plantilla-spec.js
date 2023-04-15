@@ -128,6 +128,39 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
 
 
 
+describe('Plantilla.imprime', function () {
+  // Realizo los expect
+  it("debería mostrar una tabla con todos los datos de las personas de la plantilla",
+      function () {
+          const vector = [
+              {
+                  ref: { "@ref": { id: "ref persona 1" } },
+                  data: { 
+                      Nombre_completo: { Nombre: "Pedro", Apellidos: "Cortes Heredia" },
+                  }
+              },
+              {
+                  ref: { "@ref": { id: "ref persona 2" } },
+                  data: { 
+                      Nombre_completo: { Nombre: "Jose", Apellidos: "Fernandez Cortes" },
+                     
+              }
+              }
+          ];
+
+          const expectedMsj = Plantilla.cabeceraTable() + Plantilla.cuerpoTr(vector[0]) + Plantilla.cuerpoTr(vector[1]) + Plantilla.pieTable();
+          spyOn(Frontend.Article, 'actualizar');
+          Plantilla.imprime(vector);
+          expect(Frontend.Article.actualizar).toHaveBeenCalledWith('Listado de proyectos', expectedMsj);
+      });
+})
+
+
+
+  
+
+
+
 
 
 
