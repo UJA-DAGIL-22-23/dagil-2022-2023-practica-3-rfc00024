@@ -258,6 +258,25 @@ describe("Funcion imprime.Todo que muestra todos los datos de los jugadores", fu
 
 
 
+describe("Plantilla.cabeceraTableTodo()", function() {
+  it("Debe devolver la informacion de las distintas columnas de un jugador", function() {
+    const expected = `<table class="listado-proyectos" id="myTable">
+        <thead>
+        <th>nombre</th>
+        <th>apellidos</th>
+        <th>fecha_nacimiento</th>
+        <th>participaciones_comp_oficiales</th>
+        <th>participaciones_comp_internacional</th>
+        <th>numero_trofeos</th>
+        </thead>`;
+    const result = Plantilla.cabeceraTableTodo();
+    expect(result).toEqual(expected);
+  });
+});
+
+
+
+
 
 
 
