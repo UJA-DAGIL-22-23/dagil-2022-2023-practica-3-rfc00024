@@ -199,8 +199,20 @@ describe("Plantilla.cabeceraTable", function() {
 
 
   
+describe("Cuerpotr hu2", function(){
 
+  it("comprueba que la función rellena la tabla correctamente con solo los nombres completos de los jugadores", function() {
+      const c = {
+          data: {
+            nombre: 'Pedro',
+            apellidos: ' Cortes Heredia'
+          }
+      };
+      const resultado=Plantilla.cuerpoTr(c);
+      expect(resultado).toBe('<tr><td><em>Pedro Cortes Heredia</em></td></tr>');
 
+  });
+})
 
 
 

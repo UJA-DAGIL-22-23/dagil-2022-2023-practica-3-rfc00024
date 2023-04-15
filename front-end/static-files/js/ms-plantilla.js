@@ -146,15 +146,10 @@ Plantilla.cabeceraTable = function () {
  */
 Plantilla.cuerpoTr = function (p) {
     const d = p.data
-    const nombre = d.nombre;
-    const apellidos = d.apellidos;
-    const nombreCompleto = nombre + " " + apellidos;
 
-    return `<tr title="${p.ref['@ref'].id}">
-    <td>${nombreCompleto}</td>
-    </tr>
-    `;
+    return `<tr><td><em>${d.nombre}${d.apellidos}</em></td></tr>`;
 }
+
 
 
 
