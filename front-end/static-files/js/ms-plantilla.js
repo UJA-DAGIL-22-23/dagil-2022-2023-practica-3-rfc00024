@@ -234,24 +234,3 @@ Plantilla.recupera1 = async function (callBackFn) {
         callBackFn(vectorProyectos.data)
     }
 }
-
-
-
-/**
- * Función para mostrar en pantalla todos los proyectos que se han recuperado de la BBDD.
- * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
- */
-Plantilla.imprime = function (vector) {
-    vector = vector || this.datosJugadoresNulos
-    let msj = "";
-    
-    if (vector === null || vector.length === 0 || typeof vector !== "object") {
-      msj = OBJETO_VACIO;
-    } else {
-      msj += Plantilla.cabeceraTable();
-      vector.forEach(e => msj += Plantilla.cuerpoTr(e))
-      msj += Plantilla.pieTable();
-    }
-    
-    Frontend.Article.actualizar( "Listado de proyectos", msj );
-  }

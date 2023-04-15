@@ -127,6 +127,7 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
 
 
 
+/* EXPECTS HISTORIA DE USUARIO 3 */
 
 describe('Plantilla.imprime', function () {
   // Realizo los expect
@@ -215,7 +216,7 @@ describe("Cuerpotr hu2", function(){
 })
 
 
-
+/* EXPECTS HISTORIA DE USUARIO 3 */
 
 
 
