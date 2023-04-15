@@ -1,5 +1,4 @@
-/**
- * @file Plantilla.js
+                                                                                                                                                                                                                                                       /** * @file Plantilla.js
  * @description Funciones para el procesamiento de la info enviada por el MS Plantilla
  * @author Víctor M. Rivas <vrivas@ujaen.es>
  * @date 03-feb-2023
@@ -9,6 +8,7 @@
 
 /// Creo el espacio de nombres
 let Plantilla = {};
+Plantilla.datosJugadoresNulos=null;
 
 // Plantilla de datosDescargados vacíos
 Plantilla.datosDescargadosNulos = {
@@ -93,6 +93,7 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
 }
 
 
+
 /**
  * Función principal para responder al evento de elegir la opción "Home"
  */
@@ -108,4 +109,10 @@ Plantilla.procesarAcercaDe = function () {
 }
 
 
+
+
+
+Plantilla.listar = function () {
+    this.recupera(this.imprime);
+}
 

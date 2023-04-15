@@ -8,10 +8,12 @@
 // SPECS para Jasmine
 
 // Constantes para usar en las pruebas
-const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
-const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const TITULO_HOME = "Plantilla Home"
-const TITULO_ACERCA_DE = "Plantilla Acerca de"
+const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO);
+const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO);
+const TITULO_HOME = "Plantilla Home";
+const TITULO_ACERCA_DE = "Plantilla Acerca de";
+const MOSTRAR_NOMBRES_JUGADORES = "Listado de proyectos";
+const OBJETO_VACIO = "";
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
@@ -122,6 +124,19 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
             expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
         })
 })
+
+
+
+
+
+
+
+
+  
+
+
+
+
 
 
 /*
