@@ -218,6 +218,53 @@ describe("Cuerpotr hu2", function(){
 
 /* EXPECTS HISTORIA DE USUARIO 3(Son los mismos que en la HU2) */
 
+/* EXPECTS HISTORIA DE USUARIO 4*/
+
+describe("Funcion imprime.Todo que muestra todos los datos de los jugadores", function(){
+    
+  it("debería mostrar una tabla con todos los datos de las personas de la plantilla",
+  function () {
+      const vector = [
+        {
+          ref: { "@ref": { id: "ref persona 1" } },
+          data: { 
+            nombre: "Proyecto 1",
+            apellidos: "Apellido 1",
+            fecha_de_nacimiento: { dia: 1, mes: 1, año: 2000 },
+            participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+            Participaciones_en_eventos_a_nivel_internacional: 3,
+            numero_de_trofeos_conseguidos: 2,
+          }
+        },
+        {
+          ref: { "@ref": { id: "ref persona 2" } },
+          data: { 
+            nombre: "Proyecto 1",
+            apellidos: "Apellido 1",
+            fecha_de_nacimiento: { dia: 1, mes: 1, año: 2000 },
+            participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+            Participaciones_en_eventos_a_nivel_internacional: 3,
+            numero_de_trofeos_conseguidos: 2,
+             
+          }
+        }
+    ];
+      const expectedMsj = Plantilla.cabeceraTableTodo() + Plantilla.cuerpoTrTodo(vector[0]) + Plantilla.cuerpoTrTodo(vector[1]) + Plantilla.pieTable();
+      spyOn(Frontend.Article, 'actualizar');
+      Plantilla.imprimeTodo(vector);
+      expect(Frontend.Article.actualizar).toHaveBeenCalledWith('Listado de proyectos', expectedMsj);
+  })
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
