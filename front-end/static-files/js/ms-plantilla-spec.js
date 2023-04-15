@@ -216,8 +216,7 @@ describe("Cuerpotr hu2", function(){
 })
 
 
-/* EXPECTS HISTORIA DE USUARIO 3 */
-
+/* EXPECTS HISTORIA DE USUARIO 3(Son los mismos que en la HU2) */
 
 
 

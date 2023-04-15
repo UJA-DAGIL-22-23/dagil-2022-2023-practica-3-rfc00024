@@ -234,3 +234,76 @@ Plantilla.recupera1 = async function (callBackFn) {
         callBackFn(vectorProyectos.data)
     }
 }
+
+
+
+
+
+
+/*HISTORIA DE USUARIO 4 */
+
+Plantilla.listarTodo = function () {
+    this.recupera(this.imprimeTodo);
+}
+
+
+/**
+ * Función para mostrar en pantalla todos los proyectos que se han recuperado de la BBDD.
+ * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
+ */
+Plantilla.imprimeTodo = function (vector) {
+    vector = vector || this.datosJugadoresNulos
+    let msj = "";
+    
+    if (vector === null || vector.length === 0 || typeof vector !== "object") {
+      msj = OBJETO_VACIO;
+    } else {
+      msj += Plantilla.cabeceraTableTodo();
+      vector.forEach(e => msj += Plantilla.cuerpoTrTodo(e))
+      msj += Plantilla.pieTable();
+    }
+    
+    Frontend.Article.actualizar( "Listado de proyectos", msj );
+  }
+
+
+/**
+ * Crea la cabecera para mostrar la info como tabla
+ * @returns Cabecera de la tabla
+ */
+Plantilla.cabeceraTableTodo = function () {
+    return `<table class="listado-proyectos" id="myTable">
+        <thead>
+        <th>nombre</th>
+        <th>apellidos</th>
+        <th>fecha_nacimiento</th>
+        <th>participaciones_comp_oficiales</th>
+        <th>participaciones_comp_internacional</th>
+        <th>numero_trofeos</th>
+        </thead>`;
+}
+
+/**
+ * Muestra la información de cada proyecto en un elemento TR con sus correspondientes TD
+ * @param {proyecto} p Datos del proyecto a mostrar
+ * @returns Cadena conteniendo todo el elemento TR que muestra el proyecto.
+ */
+Plantilla.cuerpoTrTodo = function (p) {
+    const d = p.data
+    const nombre = d.nombre;
+    const apellidos = d.apellidos;
+    const fecha_nacimiento = d.fecha_de_nacimiento;
+    const participaciones_comp_oficiales=d.participaciones_en_competiciones_oficiales;
+    const participaciones_comp_internacional=d.Participaciones_en_eventos_a_nivel_internacional;
+    const numero_trofeos=d.numero_de_trofeos_conseguidos;
+
+    return `<tr title="${p.ref['@ref'].id}">
+    <td>${nombre}</td>
+    <td>${apellidos}</td>
+    <td>${fecha_nacimiento.dia}/${fecha_nacimiento.mes}/${fecha_nacimiento.año}</td>
+    <td>${participaciones_comp_oficiales}</td>
+    <td>${participaciones_comp_internacional}</td>
+    <td>${numero_trofeos}</td>
+    </tr>
+    `;
+}
