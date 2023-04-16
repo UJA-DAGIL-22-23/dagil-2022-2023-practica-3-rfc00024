@@ -516,6 +516,34 @@ describe("Plantilla.cuerpoTrTodo", () => {
       expect(result).toBe(expected);
     });
   });
+
+
+  describe("Plantilla.form", function() {
+    it("debe tener una propiedad ID", function() {
+      expect(Plantilla.form.hasOwnProperty('ID')).toBe(true);
+    });
+  
+    it("debe tener una propiedad NOMBRE", function() {
+      expect(Plantilla.form.hasOwnProperty('NOMBRE')).toBe(true);
+    });
+  
+    it("debe tener una propiedad APELLIDOS", function() {
+      expect(Plantilla.form.hasOwnProperty('APELLIDOS')).toBe(true);
+    });
+  
+    it("debe tener una propiedad COMPETICIONES_OFICIALES", function() {
+      expect(Plantilla.form.hasOwnProperty('COMPETICIONES_OFICIALES')).toBe(true);
+    });
+  
+    it("debe tener una propiedad PARTICIPACIONES_INTERNACIONALES", function() {
+      expect(Plantilla.form.hasOwnProperty('PARTICIPACIONES_INTERNACIONALES')).toBe(true);
+    });
+  
+    it("debe tener una propiedad TROFEOS_CONSEGUIDOS", function() {
+      expect(Plantilla.form.hasOwnProperty('TROFEOS_CONSEGUIDOS')).toBe(true);
+    });
+  });
+  
   
 
   
