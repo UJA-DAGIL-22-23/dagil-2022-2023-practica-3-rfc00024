@@ -557,6 +557,50 @@ describe("Plantilla.plantillaFormularioPersona.formulario", function() {
 });
 
 
+describe('Plantilla.plantillaFormularioPersona.actualiza', () => {
+  const persona = {
+    ref: { '@ref': { id: '666666' } },
+    data: {
+      nombre: 'Pedro',
+      apellidos: 'Cortes Heredia',
+      participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+      Participaciones_en_eventos_a_nivel_internacional: 2,
+      numero_de_trofeos_conseguidos: 3
+    }
+  };
+
+  it('debe sustituir el ID de la persona', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(persona)
+    expect(result.includes(persona.ref['@ref'].id)).toBe(true)
+  })
+
+  it('debe sustituir el nombre de la persona', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(persona)
+    expect(result.includes(persona.data.nombre)).toBe(true)
+  })
+
+  it('debe sustituir los apellidos de la persona', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(persona)
+    expect(result.includes(persona.data.apellidos)).toBe(true)
+  })
+
+  it('debe sustituir el participaciones_en_competiciones_oficiales de la persona', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(persona)
+    expect(result.includes(persona.data.participaciones_en_competiciones_oficiales)).toBe(true)
+  })
+
+  it('debe sustituir el Participaciones_en_eventos_a_nivel_internacional de la persona', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(persona)
+    expect(result.includes(persona.data.Participaciones_en_eventos_a_nivel_internacional)).toBe(true)
+  })
+
+  it('debe sustituir el numero_de_trofeos_conseguidos de la persona', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(persona)
+    expect(result.includes(persona.data.numero_de_trofeos_conseguidos)).toBe(true)
+  })
+})
+
+
   
   
 
