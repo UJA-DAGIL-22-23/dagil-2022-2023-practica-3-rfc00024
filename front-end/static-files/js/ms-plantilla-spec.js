@@ -600,6 +600,23 @@ describe('Plantilla.plantillaFormularioPersona.actualiza', () => {
   })
 })
 
+describe("almacenaDatos", function() {
+  it("debe almacenar la persona proporcionada", function() {
+    var persona = {
+      ID: "666666",
+      NOMBRE: "Pedro",
+      APELLIDOS: "Cortes Heredia",
+      COMPETICIONES_OFICIALES: [2005,2006,2007,2009,2010,2012,2013,2014],
+      PARTICIPACIONES_INTERNACIONALES: "1",
+      TROFEOS_CONSEGUIDOS: "2"
+    };
+    Plantilla.almacenaDatos(persona);
+    expect(Plantilla.personaMostrada).toEqual(persona);
+  });
+});
+
+
+
 
   
   
