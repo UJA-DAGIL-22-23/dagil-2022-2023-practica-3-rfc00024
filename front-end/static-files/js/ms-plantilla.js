@@ -433,3 +433,35 @@ Plantilla.personaMostrada = null
 Plantilla.almacenaDatos = function (persona) {
     Plantilla.personaMostrada = persona;
 }
+
+
+
+/*FUNCIONES PARA HU8 */
+
+Plantilla.listarBuscador= function (search){ 
+    this.recuperaBuscador(this.imprime,search);
+}
+  
+  
+Plantilla.recuperaBuscador = async function (callBackFn,nombre) { 
+    let response = null
+  
+    // Intento conectar con el microservicio personas
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+  
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+  
+    // Muestro todas las persoans que se han descargado
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+        const filtro=vectorPersonas.data.filter(persona => persona.data.nombre === nombre)
+        callBackFn(filtro)
+    }
+}

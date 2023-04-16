@@ -34,6 +34,21 @@
             title="Realiza un listado de todas las personas que hay en la BBDD">Listar Todos los datos</a>
         <a href="javascript:Plantilla.mostrarP('359809616226287820')" class="opcion-principal"
             title="Realiza un listado de la informacion de el usuario marcado">Ver datos de un jugador</a>
+            <br/>
+            <br/>
+            <h1>Buscador de jugadores por nombre</h1>
+            <form>
+                <label>Buscar por nombre:</label>
+                <br/>
+                <input type="text" id="search" name="search">
+                <button type="button" onclick="buscador()">Buscar</button>
+            </form>
+            <script>
+                function buscador(){
+                    var searchTerm=document.getElementById("search").value;
+                    Plantilla.listarBuscador(searchTerm);
+                }
+            </script>
 
         </nav>
 
