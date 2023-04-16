@@ -444,7 +444,43 @@ describe("Plantilla.cuerpoTrTodo", () => {
     });
   });
   
+
+
+  describe("Plantilla Tags", function () {
+
+    it("debería tener un tag para el ID", function () {
+      expect(Plantilla.plantillaTags.ID).toBeDefined();
+      expect(typeof Plantilla.plantillaTags.ID).toBe("string");
+    });
   
+    it("debería tener un tag para el nombre", function () {
+      expect(Plantilla.plantillaTags.NOMBRE).toBeDefined();
+      expect(typeof Plantilla.plantillaTags.NOMBRE).toBe("string");
+    });
+  
+    it("debería tener un tag para los apellidos", function () {
+      expect(Plantilla.plantillaTags.APELLIDOS).toBeDefined();
+      expect(typeof Plantilla.plantillaTags.APELLIDOS).toBe("string");
+    });
+  
+    it("debería tener un tag para las competiciones oficiales", function () {
+      expect(Plantilla.plantillaTags.COMPETICIONES_OFICIALES).toBeDefined();
+      expect(typeof Plantilla.plantillaTags.COMPETICIONES_OFICIALES).toBe("string");
+    });
+  
+    it("debería tener un tag para las participaciones internacionales", function () {
+      expect(Plantilla.plantillaTags.PARTICIPACIONES_INTERNACIONALES).toBeDefined();
+      expect(typeof Plantilla.plantillaTags.PARTICIPACIONES_INTERNACIONALES).toBe("string");
+    });
+  
+    it("debería tener un tag para los trofeos conseguidos", function () {
+      expect(Plantilla.plantillaTags.TROFEOS_CONSEGUIDOS).toBeDefined();
+      expect(typeof Plantilla.plantillaTags.TROFEOS_CONSEGUIDOS).toBe("string");
+    });
+  
+  });
+  
+
   
   
 
