@@ -386,7 +386,7 @@ describe("Plantilla.cuerpoTrTodo", () => {
     let recuperaUnaPersonaSpy, imprimeUnaPersonaSpy;
   
     beforeEach(function() {
-      
+
       recuperaUnaPersonaSpy = spyOn(Plantilla, "recuperaUnaPersona");
       imprimeUnaPersonaSpy = spyOn(Plantilla, "imprimeUnaPersona");
     });
@@ -423,6 +423,28 @@ describe("Plantilla.cuerpoTrTodo", () => {
       expect(imprimeUnaPersonaSpy).toHaveBeenCalledWith(persona);
     });
   });
+
+
+  describe('Plantilla.almacenaDatos', () => {
+    it('debe almacenar correctamente la persona mostrada', () => {
+      const persona = {
+        ref: { '@ref': { id: '666666' } },
+        data: {
+          nombre: 'Pedro',
+          apellidos: 'Cortes Heredia',
+          participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+          Participaciones_en_eventos_a_nivel_internacional: 2,
+          numero_de_trofeos_conseguidos: 3
+        }
+      };
+  
+      Plantilla.almacenaDatos(persona);
+  
+      expect(Plantilla.personaMostrada).toEqual(persona);
+    });
+  });
+  
+  
   
 
 /* EXPECTS HISTORIA DE USUARIO 8*/
