@@ -382,6 +382,48 @@ describe("Plantilla.cuerpoTrTodo", () => {
   });
   
 
+  describe("Prueba de Plantilla.mostrarP()", function() {
+    let recuperaUnaPersonaSpy, imprimeUnaPersonaSpy;
+  
+    beforeEach(function() {
+      
+      recuperaUnaPersonaSpy = spyOn(Plantilla, "recuperaUnaPersona");
+      imprimeUnaPersonaSpy = spyOn(Plantilla, "imprimeUnaPersona");
+    });
+  
+    it("debe llamar a Plantilla.recuperaUnaPersona() con el ID de la persona", function() {
+      // Configurar la prueba
+      const idPersona = "666666";
+  
+      // Ejecutar el código a probar
+      Plantilla.mostrarP(idPersona);
+  
+      // Comprobar el resultado
+      expect(recuperaUnaPersonaSpy).toHaveBeenCalledWith(idPersona, jasmine.any(Function));
+    });
+  
+    it("debe llamar a Plantilla.imprimeUnaPersona() con la persona recuperada", function() {
+      // Configurar la prueba
+      const persona = {
+        ref: { "@ref": { id: "666666" } },
+        data: {
+          nombre: "Pedro",
+          apellidos: "Cortes Heredia",
+          participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+          Participaciones_en_eventos_a_nivel_internacional: 5,
+          numero_de_trofeos_conseguidos: 3
+        }
+      };
+      recuperaUnaPersonaSpy.and.callFake(function(id, callBackFn) {
+        callBackFn(persona);
+      });
+  
+      Plantilla.mostrarP("666666");
+  
+      expect(imprimeUnaPersonaSpy).toHaveBeenCalledWith(persona);
+    });
+  });
+  
 
 /* EXPECTS HISTORIA DE USUARIO 8*/
 
