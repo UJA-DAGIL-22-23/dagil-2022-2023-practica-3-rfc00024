@@ -341,6 +341,46 @@ describe("Plantilla.cuerpoTrTodo", () => {
   });
 
 
+  describe("Plantilla.imprimeUnaPersona", function () {
+
+    let persona = {
+      ref: {
+        '@ref': {
+          id: 'persona123'
+        }
+      },
+      data: {
+        nombre: 'Pedro',
+        apellidos: 'Cortes Heredia',
+        participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+        Participaciones_en_eventos_a_nivel_internacional: 2,
+        numero_de_trofeos_conseguidos: 3
+      }
+    };
+  
+    beforeEach(function () {
+      spyOn(Plantilla, 'personaComoFormulario').and.returnValue('<form></form>');
+      spyOn(Frontend.Article, 'actualizar');
+      spyOn(Plantilla, 'almacenaDatos');
+    });
+  
+    it("llama a Plantilla.personaComoFormulario con la persona correspondiente", function () {
+      Plantilla.imprimeUnaPersona(persona);
+      expect(Plantilla.personaComoFormulario).toHaveBeenCalledWith(persona);
+    });
+  
+    it("actualiza el artículo con el formulario generado por Plantilla.personaComoFormulario", function () {
+      Plantilla.imprimeUnaPersona(persona);
+      expect(Frontend.Article.actualizar).toHaveBeenCalledWith("Mostrar una persona", '<form></form>');
+    });
+  
+    it("almacena los datos de la persona", function () {
+      Plantilla.imprimeUnaPersona(persona);
+      expect(Plantilla.almacenaDatos).toHaveBeenCalledWith(persona);
+    });
+  
+  });
+  
 
 
 /* EXPECTS HISTORIA DE USUARIO 8*/
