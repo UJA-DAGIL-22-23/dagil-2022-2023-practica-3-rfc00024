@@ -545,6 +545,17 @@ describe("Plantilla.cuerpoTrTodo", () => {
   });
   
   
+describe("Plantilla.plantillaFormularioPersona.formulario", function() {
+  it("debe contener las etiquetas de plantilla correspondientes", function() {
+    expect(Plantilla.plantillaFormularioPersona.formulario).toContain("form-persona-id");
+    expect(Plantilla.plantillaFormularioPersona.formulario).toContain("form-persona-nombre");
+    expect(Plantilla.plantillaFormularioPersona.formulario).toContain("form-persona-apellidos");
+    expect(Plantilla.plantillaFormularioPersona.formulario).toContain("form-persona-competiciones_oficiales");
+    expect(Plantilla.plantillaFormularioPersona.formulario).toContain("form-persona-participaciones_oficiales");
+    expect(Plantilla.plantillaFormularioPersona.formulario).toContain("form-persona-trofeosConseguidos");
+  });
+});
+
 
   
   
