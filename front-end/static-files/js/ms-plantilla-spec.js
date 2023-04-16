@@ -481,6 +481,43 @@ describe("Plantilla.cuerpoTrTodo", () => {
   });
   
 
+
+  describe('Plantilla.sustituyeTags', () => {
+    it('sustituye los tags por los valores de la persona', () => {
+      const plantilla = `
+        <p>ID: ### ID ###</p>
+        <p>NOMBRE: ### NOMBRE ###</p>
+        <p>APELLIDOS: ### APELLIDOS ###</p>
+        <p>COMPETICIONES_OFICIALES: ### COMPETICIONES_OFICIALES ###</p>
+        <p>PARTICIPACIONES_INTERNACIONALES: ### PARTICIPACIONES_INTERNACIONALES ###</p>
+        <p>TROFEOS_CONSEGUIDOS: ### TROFEOS_CONSEGUIDOS ###</p>
+      `;
+      const persona = {
+        ref: { '@ref': { id: '666666' } },
+        data: {
+          nombre: 'Pedro',
+          apellidos: 'Cortes Heredia',
+          participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+          Participaciones_en_eventos_a_nivel_internacional: 2,
+          numero_de_trofeos_conseguidos: 3
+        }
+      };
+      const expected = `
+        <p>ID: 666666</p>
+        <p>NOMBRE: Pedro</p>
+        <p>APELLIDOS: Cortes Heredia</p>
+        <p>COMPETICIONES_OFICIALES: 2005,2006,2007,2009,2010,2012,2013,2014</p>
+        <p>PARTICIPACIONES_INTERNACIONALES: 2</p>
+        <p>TROFEOS_CONSEGUIDOS: 3</p>
+      `;
+  
+      const result = Plantilla.sustituyeTags(plantilla, persona);
+  
+      expect(result).toBe(expected);
+    });
+  });
+  
+
   
   
 
