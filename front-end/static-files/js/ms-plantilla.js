@@ -307,3 +307,129 @@ Plantilla.cuerpoTrTodo = function (p) {
     </tr>
     `;
 }
+
+
+
+/*HISTORIA DE USUARIO 6 */
+
+
+
+Plantilla.personaComoFormulario = function (persona) {
+    return Plantilla.plantillaFormularioPersona.actualiza( persona );
+}
+
+Plantilla.imprimeUnaPersona = function (persona) {
+    // console.log(persona) // Para comprobar lo que hay en vector
+    let msj = Plantilla.personaComoFormulario(persona);
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar("Mostrar una persona", msj)
+
+    // Actualiza el objeto que guarda los datos mostrados
+    Plantilla.almacenaDatos(persona)
+}
+
+
+Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idPersona
+        const response = await fetch(url);
+            if (response) {
+                const persona = await response.json()
+                callBackFn(persona)
+            }
+    } catch (error) {
+            alert("ErrorRecuperaUnaPersona: No se han podido acceder al API Gateway")
+            console.error(error)
+        }
+}
+
+Plantilla.mostrarP = function (idPersona) {
+    this.recuperaUnaPersona(idPersona, this.imprimeUnaPersona);
+}
+
+Plantilla.plantillaTags = {
+    "ID": "### ID ###",
+    "NOMBRE": "### NOMBRE ###",
+    "APELLIDOS": "### APELLIDOS ###",
+    "COMPETICIONES_OFICIALES": "### COMPETICIONES_OFICIALES ###",
+    "PARTICIPACIONES_INTERNACIONALES": "### PARTICIPACIONES_INTERNACIONALES ###",
+    "TROFEOS_CONSEGUIDOS": "### TROFEOS_CONSEGUIDOS ###",
+}
+
+Plantilla.sustituyeTags = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.APELLIDOS, 'g'), persona.data.apellidos)
+        .replace(new RegExp(Plantilla.plantillaTags.COMPETICIONES_OFICIALES, 'g'), persona.data.participaciones_en_competiciones_oficiales)
+        .replace(new RegExp(Plantilla.plantillaTags.PARTICIPACIONES_INTERNACIONALES, 'g'), persona.data.Participaciones_en_eventos_a_nivel_internacional)
+        .replace(new RegExp(Plantilla.plantillaTags.TROFEOS_CONSEGUIDOS, 'g'), persona.data.numero_de_trofeos_conseguidos)
+        
+
+}
+
+Plantilla.plantillaFormularioPersona = {}
+
+Plantilla.form = {
+    ID: "form-persona-id",
+    NOMBRE: "form-persona-nombre",
+    APELLIDOS: "form-persona-apellidos",
+    COMPETICIONES_OFICIALES: "form-persona-competiciones_oficiales",
+    PARTICIPACIONES_INTERNACIONALES: "form-persona-participaciones_internacionales",
+    TROFEOS_CONSEGUIDOS: "form-persona-trofeosConseguidos",
+}
+
+Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
+    return Plantilla.sustituyeTags(this.formulario, persona)
+}
+
+Plantilla.plantillaFormularioPersona.formulario = `
+<form method='post' action=''>
+    <table class="listado-proyectos">
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>APELLIDOS</th>
+            <th></th>
+            <th>COMPETICIONES_OFICIALES</th>
+            <th></th>
+            <th>PARTICIPACIONES_INTERNACIONALES</th>
+            <th>TROFEOS_CONSEGUIDOS</th>
+        </thead>
+        <tbody>
+            <tr title="${Plantilla.plantillaTags.ID}">
+                <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
+                        value="${Plantilla.plantillaTags.ID}" 
+                        name="id_persona"/></td>
+                        
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-nombre" required value="${Plantilla.plantillaTags.NOMBRE}" 
+                        name="nombre_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-apellidos" required value="${Plantilla.plantillaTags.APELLIDOS}" 
+                        name="apellidos_persona"/></td>
+                <td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-competiciones_oficiales" required value="${Plantilla.plantillaTags.COMPETICIONES_OFICIALES}" 
+                        name="competiciones_oficiales"/></td>
+                <td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-participaciones_oficiales" required value="${Plantilla.plantillaTags.PARTICIPACIONES_INTERNACIONALES}" 
+                        name="participaciones_oficiales"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-trofeosConseguidos" required value="${Plantilla.plantillaTags.TROFEOS_CONSEGUIDOS}" 
+                        name="trofeos_conseguidos"/></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+`;
+
+
+
+Plantilla.personaMostrada = null
+
+Plantilla.almacenaDatos = function (persona) {
+    Plantilla.personaMostrada = persona;
+}

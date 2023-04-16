@@ -302,6 +302,35 @@ describe("Plantilla.cuerpoTrTodo", () => {
   });
 });
 
+/* EXPECTS HISTORIA DE USUARIO 6*/
+
+
+
+
+
+/* EXPECTS HISTORIA DE USUARIO 8*/
+
+
+
+
+
+
+/* EXPECTS HISTORIA DE USUARIO 10*/
+
+
+
+
+
+
+
+/* EXPECTS HISTORIA DE USUARIO 12*/
+
+
+
+
+
+
+/* EXPECTS HISTORIA DE USUARIO 13*/
 
 
 

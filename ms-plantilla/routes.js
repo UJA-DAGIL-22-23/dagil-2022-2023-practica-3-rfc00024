@@ -10,7 +10,6 @@ const router = express.Router();
 const { callbacks } = require("./callbacks");
 
 
-
 /**
  * Ruta raíz: /
  */
@@ -33,16 +32,6 @@ router.get("/acercade", async (req, res) => {
     }
 });
 
-/**
- * Devuelve todas las personas que hay en la BBDD
- */
-router.get("/getTodas", async (req, res) => {
-    try {
-        await callbacks.getTodas(req, res)
-    } catch (error) {
-        console.log(error);
-    }
-});
 
 
 /**
@@ -56,7 +45,39 @@ router.get("/test_db", async (req, res) => {
     }
 });
 
+/**
+ * Devuelve todas las personas que hay en la BBDD
+ */
+router.get("/getTodas", async (req, res) => {
+    try {
+        await callbacks.getTodas(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.param("idPersona", (req, res, next, id) => {
+    next();
+});
+
+
+router.get("/getPorId/:idPersona", async (req, res) => {
+    try {
+        await callbacks.getPorId(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+router.post("/setTodo", async (req, res) => {
+    try {
+        await callbacks.setTodo(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
 // Exporto el módulo para poder usarlo en server
-module.exports = router;
+module.exports = router;

@@ -65,7 +65,7 @@ const CB_MODEL_SELECTS = {
      * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
      * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
      */
-         getTodas: async (req, res) => {
+    getTodas: async (req, res) => {
             try {
                 let personas = await client.query(
                     q.Map(
@@ -80,26 +80,21 @@ const CB_MODEL_SELECTS = {
             } catch (error) {
                 CORS(res).status(500).json({ error: error.description })
             }
-        },
-        getPorId: async (req, res) => {
-            try {
-                // console.log( "getPorId req", req.params.idPersona ) // req.params contiene todos los parámetros de la llamada
-                let persona = await client.query(
-                    q.Get(q.Ref(q.Collection(COLLECTION), req.params.idPersona))
-                )
-                // console.log( persona ) // Para comprobar qué se ha devuelto en persona
-                CORS(res)
-                    .status(200)
-                    .json(persona)
-            } catch (error) {
-                CORS(res).status(500).json({ error: error.description })
-            }
-        },
-
-
-
-
-    
+    },
+    getPorId: async (req, res) => {
+        try {
+            // console.log( "getPorId req", req.params.idPersona ) // req.params contiene todos los parámetros de la llamada
+            let persona = await client.query(
+                q.Get(q.Ref(q.Collection(COLLECTION), req.params.idPersona))
+            )
+            // console.log( persona ) // Para comprobar qué se ha devuelto en persona
+            CORS(res)
+                .status(200)
+                .json(persona)
+        } catch (error) {
+            CORS(res).status(500).json({ error: error.description })
+        }
+    },
 
 }
 
@@ -147,7 +142,7 @@ const CB_OTHERS = {
 
 
 
-    
+
 
 
 
