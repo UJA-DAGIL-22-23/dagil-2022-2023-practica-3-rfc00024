@@ -306,6 +306,41 @@ describe("Plantilla.cuerpoTrTodo", () => {
 
 
 
+  describe("personaComoFormulario", function() {
+    it("comprueba que la función devuelve el formulario de persona correctamente actualizado", function() {
+      const persona = {
+        ref: {
+          '@ref': {
+            id: '222222'
+          }
+        },
+        data: {
+          nombre: 'Pedro',
+          apellidos: 'Cortes Heredia',
+          participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+          Participaciones_en_eventos_a_nivel_internacional: 5,
+          numero_de_trofeos_conseguidos: 3
+        }
+      };
+
+      const formulario = '<form><input type="text" name="nombre" value="' + persona.data.nombre + '">' +
+                          '<input type="text" name="apellidos" value="' + persona.data.apellidos + '">' +
+                          '<input type="number" name="participaciones_en_competiciones_oficiales" value="' + persona.data.participaciones_en_competiciones_oficiales + '">' +
+                          '<input type="number" name="Participaciones_en_eventos_a_nivel_internacional" value="' + persona.data.Participaciones_en_eventos_a_nivel_internacional + '">' +
+                          '<input type="number" name="numero_de_trofeos_conseguidos" value="' + persona.data.numero_de_trofeos_conseguidos + '">' +
+                          '<input type="hidden" name="id" value="' + persona.ref['@ref'].id + '">' +
+                          '<input type="submit" value="Enviar"></form>';
+
+      spyOn(Plantilla, 'sustituyeTags').and.returnValue(formulario);
+
+      const resultado = Plantilla.personaComoFormulario(persona);
+
+      expect(Plantilla.sustituyeTags).toHaveBeenCalledWith(Plantilla.plantillaFormularioPersona.formulario, persona);
+      expect(resultado).toBe(formulario);
+    });
+  });
+
+
 
 
 /* EXPECTS HISTORIA DE USUARIO 8*/
