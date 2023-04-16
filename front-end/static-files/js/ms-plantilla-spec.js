@@ -624,6 +624,14 @@ describe("almacenaDatos", function() {
 /* EXPECTS HISTORIA DE USUARIO 8*/
 
 
+describe("Plantilla.listarBuscador", () => {
+  it("should call Plantilla.recuperaBuscador with search parameter", () => {
+    spyOn(Plantilla, "recuperaBuscador");
+    const search = "Pedro Cortes";
+    Plantilla.listarBuscador(search);
+    expect(Plantilla.recuperaBuscador).toHaveBeenCalledWith(Plantilla.imprime, search);
+  });
+});
 
 
 
