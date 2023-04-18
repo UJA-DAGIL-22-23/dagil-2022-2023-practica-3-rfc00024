@@ -96,6 +96,43 @@ const CB_MODEL_SELECTS = {
         }
     },
 
+setTodo: async (req, res) => {
+
+    try {
+        let valorDevuelto = {}
+        // Hay que comprobar Object.keys(req.body).length para saber si req.body es objeto "normal" o con problemas
+        // Cuando la llamada viene de un formulario, se crea una sola entrada, con toda la info en una sola key y el value está vacío.
+        // Cuando la llamada se hace con un objeto (como se hace desde el server-spec.js), el value No está vacío.
+        let data = (Object.values(req.body)[0] === '') ? JSON.parse(Object.keys(req.body)[0]) : req.body
+        let persona = await client.query(
+            q.Update(
+                q.Ref(q.Collection(COLLECTION), data.id_persona),
+                {
+                    data: {
+                        nombre: data.nombre_persona,
+                        apellidos: data.apellidos_persona,
+                        competicionesOficiales: data.competicionesOficiales_persona,
+                        eventosInternacionales: data.eventosInternacionales_persona,
+                        trofeosConseguidos: data.trofeosConseguidos_persona
+                    },
+                },
+            )
+        )
+            .then((ret) => {
+                valorDevuelto = ret
+                //console.log("Valor devuelto ", valorDevuelto)
+                CORS(res)
+                    .status(200)
+                    .header( 'Content-Type', 'application/json' )
+                    .json(valorDevuelto)
+            })
+
+    } catch (error) {
+        CORS(res).status(500).json({ error: error.description })
+    }
+},
+
+
 }
 
 

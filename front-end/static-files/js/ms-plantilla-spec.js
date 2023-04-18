@@ -644,14 +644,16 @@ describe("Plantilla.listarBuscador", () => {
 
 
 
-/* EXPECTS HISTORIA DE USUARIO 12*/
+/* EXPECTS HISTORIA DE USUARIO 12 y 13*/
 
 
 
 
 
 
-/* EXPECTS HISTORIA DE USUARIO 13*/
+
+
+
 
 
 

@@ -131,3 +131,11 @@ Frontend.Article.actualizar = function (titulo, contenido) {
     document.getElementById( Frontend.ID_SECCION_PRINCIPAL_CONTENIDO ).innerHTML = contenido
     return this;
 }
+
+Frontend.Article.actualizarBoton = function (titulo,contenido){
+    this.borrar()
+        .aniadirTitulo(titulo)
+        .aniadirContenido(contenido)
+        .mostrar()
+    return this;
+}
