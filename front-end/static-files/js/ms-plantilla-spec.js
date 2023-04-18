@@ -1004,6 +1004,20 @@ describe('Plantilla.habilitarCamposEditables', () => {
 
 
 
+describe('Plantilla.ocultarOpcionesSecundarias', () => {
+  let opcionesMostrarOcultarSpy;
+
+  beforeEach(() => {
+    opcionesMostrarOcultarSpy = spyOn(Plantilla, 'opcionesMostrarOcultar');
+  });
+
+  it('debe llamar a la función Plantilla.opcionesMostrarOcultar con el parámetro "opcion-secundaria" y false', () => {
+    Plantilla.ocultarOpcionesSecundarias();
+    expect(opcionesMostrarOcultarSpy).toHaveBeenCalledWith("opcion-secundaria", false);
+  });
+});
+
+
 
 
 
