@@ -924,6 +924,23 @@ describe('Plantilla.imprimePersona2', () => {
 
 
 
+describe('Plantilla.almacenaDatos', () => {
+  const persona = {
+    ref: { "@ref": { id: "ref persona 2" } },
+    data: { 
+      nombre: "Persona 1",
+      apellidos: "Apellidos",
+      participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+      Participaciones_en_eventos_a_nivel_internacional: 3,
+      numero_de_trofeos_conseguidos: 2,
+    }
+  };
+
+  it('debe almacenar correctamente la persona en Plantilla.personaMostrada', () => {
+    Plantilla.almacenaDatos(persona);
+    expect(Plantilla.personaMostrada).toEqual(persona);
+  });
+});
 
 
 
