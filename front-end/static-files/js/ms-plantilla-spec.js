@@ -884,6 +884,44 @@ describe('Plantilla.imprimePersona', () => {
 
 
 
+describe('Plantilla.imprimePersona2', () => {
+  const persona = {
+    ref: { "@ref": { id: "ref persona 2" } },
+    data: { 
+      nombre: "Persona 1",
+      apellidos: "Apellidos",
+      participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+      Participaciones_en_eventos_a_nivel_internacional: 3,
+      numero_de_trofeos_conseguidos: 2,
+    }
+  };
+
+  let actualizar;
+  let almacenaDatos;
+  let personaComoFormulario;
+
+  beforeEach(() => {
+    actualizar = spyOn(Frontend.Article, 'actualizar');
+    almacenaDatos = spyOn(Plantilla, 'almacenaDatos');
+    personaComoFormulario = spyOn(Plantilla, 'personaComoFormulario2').and.returnValue("Formulario de la persona");
+  });
+
+  it('debe llamar a la función Frontend.Article.actualizar con el mensaje correcto', () => {
+    Plantilla.imprimePersona2(persona);
+    expect(actualizar).toHaveBeenCalledWith("Mostrar participante", "Formulario de la persona");
+  });
+
+  it('debe llamar a la función Plantilla.almacenaDatos con la persona', () => {
+    Plantilla.imprimePersona2(persona);
+    expect(almacenaDatos).toHaveBeenCalledWith(persona);
+  });
+
+  it('debe llamar a la función Plantilla.personaComoFormulario2 con la persona', () => {
+    Plantilla.imprimePersona2(persona);
+    expect(personaComoFormulario).toHaveBeenCalledWith(persona);
+  });
+});
+
 
 
 
