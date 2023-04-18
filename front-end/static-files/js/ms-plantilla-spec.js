@@ -944,6 +944,30 @@ describe('Plantilla.almacenaDatos', () => {
 
 
 
+describe('Plantilla.recuperaDatosAlmacenados', () => {
+  const persona = {
+    ref: { "@ref": { id: "ref persona 2" } },
+    data: { 
+      nombre: "Persona 1",
+      apellidos: "Apellidos",
+      participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+      Participaciones_en_eventos_a_nivel_internacional: 3,
+      numero_de_trofeos_conseguidos: 2,
+    }
+  };
+
+  beforeEach(() => {
+    Plantilla.personaMostrada = persona;
+  });
+
+  it('debe devolver la persona almacenada en Plantilla.personaMostrada', () => {
+    const personaRecuperada = Plantilla.recuperaDatosAlmacenados();
+    expect(personaRecuperada).toEqual(persona);
+  });
+});
+
+
+
 
 
 /*
