@@ -636,11 +636,6 @@ describe("Plantilla.listarBuscador", () => {
 
 
 
-/* EXPECTS HISTORIA DE USUARIO 10*/
-
-
-
-
 
 
 
@@ -1118,6 +1113,18 @@ describe("Plantilla.cancelar", function() {
   });
 });
 
+/* EXPECTS HISTORIA DE USUARIO 9*/
+
+describe('Plantilla.buscarCampos', () => {
+  const search2 = 'Juan';
+  
+  it('Llama a Plantilla.BuscaCampos con los parámetros correctos', () => {
+      const spy = spyOn(Plantilla, 'BuscaCampos');
+      Plantilla.buscarCampos(search2); 
+      
+      expect(spy).toHaveBeenCalledWith(Plantilla.imprimeTodo, search2); 
+  });
+});
 
 
 
