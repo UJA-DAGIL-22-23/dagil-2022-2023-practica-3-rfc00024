@@ -1019,6 +1019,21 @@ describe('Plantilla.ocultarOpcionesSecundarias', () => {
 
 
 
+describe('Plantilla.mostrarOpcionesSecundarias', () => {
+  let opcionesMostrarOcultarSpy;
+
+  beforeEach(() => {
+    opcionesMostrarOcultarSpy = spyOn(Plantilla, 'opcionesMostrarOcultar');
+  });
+
+  it('debe llamar a la función Plantilla.opcionesMostrarOcultar con el parámetro "opcion-secundaria" y true', () => {
+    Plantilla.mostrarOpcionesSecundarias();
+    expect(opcionesMostrarOcultarSpy).toHaveBeenCalledWith("opcion-secundaria", true);
+  });
+});
+
+
+
 
 
 
