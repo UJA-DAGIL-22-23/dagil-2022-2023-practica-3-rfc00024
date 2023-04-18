@@ -967,6 +967,23 @@ describe('Plantilla.recuperaDatosAlmacenados', () => {
 });
 
 
+describe('Plantilla.deshabilitarCamposEditables', () => {
+  let spyHabilitarDeshabilitarCamposEditables;
+  beforeEach(() => {
+    spyHabilitarDeshabilitarCamposEditables = spyOn(Plantilla, 'habilitarDeshabilitarCamposEditables');
+  });
+  it('debe llamar a la función Plantilla.habilitarDeshabilitarCamposEditables con true', () => {
+    Plantilla.deshabilitarCamposEditables();
+    expect(spyHabilitarDeshabilitarCamposEditables).toHaveBeenCalledWith(true);
+  });
+
+  it('debe retornar la instancia de la plantilla', () => {
+    const resultado = Plantilla.deshabilitarCamposEditables();
+    expect(resultado).toBe(Plantilla);
+  });
+});
+
+
 
 
 
