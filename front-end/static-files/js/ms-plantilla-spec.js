@@ -646,6 +646,14 @@ describe("Plantilla.listarBuscador", () => {
 
 /* EXPECTS HISTORIA DE USUARIO 12 y 13*/
 
+describe('Plantilla.ModificarDatos', () => {
+  it('Debe llamar a la función recupera con la función imprimeMuchasPersonas como argumento', () => {
+    spyOn(Plantilla, 'recupera');
+    spyOn(Plantilla, 'imprimeMuchasPersonas');
+    Plantilla.ModificarDatos();
+    expect(Plantilla.recupera).toHaveBeenCalledWith(Plantilla.imprimeMuchasPersonas);
+  });
+});
 
 
 
