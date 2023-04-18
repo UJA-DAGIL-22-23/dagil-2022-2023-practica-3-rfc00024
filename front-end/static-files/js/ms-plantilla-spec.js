@@ -985,6 +985,27 @@ describe('Plantilla.deshabilitarCamposEditables', () => {
 
 
 
+describe('Plantilla.habilitarCamposEditables', () => {
+  let spyHabilitarDeshabilitarCamposEditables;
+  beforeEach(() => {
+    spyHabilitarDeshabilitarCamposEditables = spyOn(Plantilla, 'habilitarDeshabilitarCamposEditables');
+  });
+
+  it('debe llamar a la función Plantilla.habilitarDeshabilitarCamposEditables con false', () => {
+    Plantilla.habilitarCamposEditables();
+    expect(spyHabilitarDeshabilitarCamposEditables).toHaveBeenCalledWith(false);
+  });
+
+  it('debe retornar la instancia de la plantilla', () => {
+    const resultado = Plantilla.habilitarCamposEditables();
+    expect(resultado).toBe(Plantilla);
+  });
+});
+
+
+
+
+
 
 
 /*
