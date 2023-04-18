@@ -1088,6 +1088,40 @@ describe("Plantilla.editar", function() {
 
 
 
+describe("Plantilla.cancelar", function() {
+  beforeEach(function() {
+    spyOn(Plantilla, "imprimePersona2");
+    spyOn(Plantilla, "deshabilitarCamposEditables");
+    spyOn(Plantilla, "ocultarOcionesTerciariasEditar");
+    spyOn(Plantilla, "mostrarOpcionesSecundarias");
+    spyOn(Plantilla, "recuperaDatosAlmacenados").and.returnValue("datos de persona");
+  });
+
+  it("Tiene que llamar a imprimePersona2 con el resultado de recuperaDatosAlmacenados", function() {
+    Plantilla.cancelar();
+    expect(Plantilla.imprimePersona2).toHaveBeenCalledWith("datos de persona");
+  });
+
+  it("Tiene que llamar a deshabilitarCamposEditables", function() {
+    Plantilla.cancelar();
+    expect(Plantilla.deshabilitarCamposEditables).toHaveBeenCalled();
+  });
+
+  it("Tiene que llamar a ocultarOcionesTerciariasEditar", function() {
+    Plantilla.cancelar();
+    expect(Plantilla.ocultarOcionesTerciariasEditar).toHaveBeenCalled();
+  });
+
+  it("Tiene que llamar a mostrarOpcionesSecundarias", function() {
+    Plantilla.cancelar();
+    expect(Plantilla.mostrarOpcionesSecundarias).toHaveBeenCalled();
+  });
+});
+
+
+
+
+
 
 /*
 IMPORTANTE
