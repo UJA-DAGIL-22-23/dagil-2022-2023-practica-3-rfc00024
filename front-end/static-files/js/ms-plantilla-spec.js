@@ -656,8 +656,6 @@ describe('Plantilla.ModificarDatos', () => {
 });
 
 
-
-
 describe("Plantilla.plantillaTablaPersonas.cabecera", function() {
   it("Debería generar la cabecera de una tabla HTML con las columnas y encabezados correspondientes", function() {
     const columnasEsperadas = [
@@ -710,6 +708,20 @@ describe("Plantilla.plantillaTablaPersonas.cabecera", function() {
   });
 });
 
+
+describe("Plantilla.plantillaTablaPersonas.pie", () => {
+    it("debe contener la etiqueta </tbody>", () => {
+      expect(Plantilla.plantillaTablaPersonas.pie).toContain("</tbody>");
+    });
+
+    it("debe contener la etiqueta </table>", () => {
+      expect(Plantilla.plantillaTablaPersonas.pie).toContain("</table>");
+    });
+
+    it("debe tener una longitud mayor que cero", () => {
+      expect(Plantilla.plantillaTablaPersonas.pie.length).toBeGreaterThan(0);
+    });
+});
 
 
 
