@@ -1048,6 +1048,21 @@ describe('Plantilla.mostrarOcionesTerciariasEditar', () => {
 
 
 
+describe('Plantilla.ocultarOcionesTerciariasEditar', () => {
+  let opcionesMostrarOcultarSpy;
+
+  beforeEach(() => {
+    opcionesMostrarOcultarSpy = spyOn(Plantilla, 'opcionesMostrarOcultar');
+  });
+
+  it('debe llamar a la función Plantilla.opcionesMostrarOcultar con los parámetros correctos', () => {
+    Plantilla.ocultarOcionesTerciariasEditar();
+    expect(opcionesMostrarOcultarSpy).toHaveBeenCalledWith('opcion-terciaria editar', false);
+  });
+});
+
+
+
 
 
 
