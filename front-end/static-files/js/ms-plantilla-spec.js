@@ -813,6 +813,35 @@ describe('Plantilla.plantillaTablaPersonas.actualiza', () => {
 })
 
 
+describe("personaComoFormulario2", function() {
+  it("debe comprobar que la función devuelve el formulario de persona bien actualizado", function() {
+    const persona = {
+      ref: { "@ref": { id: "ref persona 2" } },
+      data: { 
+        nombre: "Persona 1",
+        apellidos: "Apellidos",
+        participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+        Participaciones_en_eventos_a_nivel_internacional: 3,
+        numero_de_trofeos_conseguidos: 2,
+    }
+  }
+
+    const formulario = '<form><input type="text" name="nombre" value="' + persona.data.nombre + '">' +
+                        '<input type="text" name="pais" value="' + persona.data.apellidos + '">' +
+                        '<input type="number" name="edad" value="' + persona.data.participaciones_en_competiciones_oficiales + '">' +
+                        '<input type="text" name="modalidad" value="' + persona.data.Participaciones_en_eventos_a_nivel_internacional + '">' +
+                        '<input type="number" name="grupo" value="' + persona.data.numero_de_trofeos_conseguidos + '">' +
+                        '<input type="submit" value="Enviar"></form>';
+
+    spyOn(Plantilla, 'sustituyeTags').and.returnValue(formulario);
+
+    const resultado = Plantilla.personaComoFormulario(persona);
+
+    expect(Plantilla.sustituyeTags).toHaveBeenCalledWith(Plantilla.plantillaFormularioPersona.formulario, persona);
+    expect(resultado).toBe(formulario);
+  });
+});
+
 
 
 
