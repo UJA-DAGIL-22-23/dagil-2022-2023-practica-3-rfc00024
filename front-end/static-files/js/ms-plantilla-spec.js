@@ -726,7 +726,7 @@ describe("Plantilla.plantillaTablaPersonas.pie", () => {
 
 
 
-describe('Plantilla.plantillaTablaPersonas.actualiza', () => {
+describe('Plantilla.plantillaTablaPersonas.actualiza2', () => {
   const Persona = {
     ref: { '@ref': { id: '1234' } },
     data: {
@@ -758,11 +758,11 @@ describe('Plantilla.plantillaTablaPersonas.actualiza', () => {
     expect(result.includes(Persona.data.participaciones_en_competiciones_oficiales)).toBe(true)
   })
 
-  it('deberia reemplazar el tag PARTICIPACIONES_INTERNACIONALES', () => {
+  it('deberia reemplazar el PARTICIPACIONES_INTERNACIONALES', () => {
     const result = Plantilla.plantillaFormularioPersona.actualiza2(Persona)
     expect(result.includes(Persona.data.Participaciones_en_eventos_a_nivel_internacional)).toBe(true)
   })
-  it('deberia reemplazar el tag TROFEOS_CONSEGUIDOS', () => {
+  it('deberia reemplazar el TROFEOS_CONSEGUIDOS', () => {
     const result = Plantilla.plantillaFormularioPersona.actualiza2(Persona)
     expect(result.includes(Persona.data.numero_de_trofeos_conseguidos)).toBe(true)
   })
@@ -770,6 +770,47 @@ describe('Plantilla.plantillaTablaPersonas.actualiza', () => {
 
 
 
+describe('Plantilla.plantillaTablaPersonas.actualiza', () => {
+  const Persona = {
+    ref: { '@ref': { id: '1234' } },
+    data: {
+      nombre: "Persona 1",
+      apellidos: "Apellidos",
+      participaciones_en_competiciones_oficiales: [2005,2006,2007,2009,2010,2012,2013,2014],
+      Participaciones_en_eventos_a_nivel_internacional: 3,
+      numero_de_trofeos_conseguidos: 2,
+    }
+  }
+
+  it('deberia reemplazar el ID', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(Persona)
+    expect(result.includes(Persona.ref['@ref'].id)).toBe(true)
+  })
+
+  it('deberia reemplazar el NOMBRE ', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(Persona)
+    expect(result.includes(Persona.data.nombre)).toBe(true)
+  })
+
+  it('deberia reemplazar el  APELLIDOS', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(Persona)
+    expect(result.includes(Persona.data.apellidos)).toBe(true)
+  })
+
+  it('deberia reemplazar el COMPETICIONES_OFICIALES ', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(Persona)
+    expect(result.includes(Persona.data.participaciones_en_competiciones_oficiales)).toBe(true)
+  })
+
+  it('deberia reemplazar el PARTICIPACIONES_INTERNACIONALES', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(Persona)
+    expect(result.includes(Persona.data.Participaciones_en_eventos_a_nivel_internacional)).toBe(true)
+  })
+  it('deberia reemplazar el TROFEOS_CONSEGUIDOS', () => {
+    const result = Plantilla.plantillaFormularioPersona.actualiza(Persona)
+    expect(result.includes(Persona.data.numero_de_trofeos_conseguidos)).toBe(true)
+  })
+})
 
 
 
