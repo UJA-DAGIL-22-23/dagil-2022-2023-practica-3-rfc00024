@@ -1062,6 +1062,29 @@ describe('Plantilla.ocultarOcionesTerciariasEditar', () => {
 });
 
 
+describe("Plantilla.editar", function() {
+  beforeEach(function() {
+    spyOn(Plantilla, "ocultarOpcionesSecundarias");
+    spyOn(Plantilla, "mostrarOcionesTerciariasEditar");
+    spyOn(Plantilla, "habilitarCamposEditables");
+  });
+
+  it("debe llamar a Plantilla.ocultarOpcionesSecundarias", function() {
+    Plantilla.editar();
+    expect(Plantilla.ocultarOpcionesSecundarias).toHaveBeenCalled();
+  });
+
+  it("debe llamar a Plantilla.mostrarOcionesTerciariasEditar", function() {
+    Plantilla.editar();
+    expect(Plantilla.mostrarOcionesTerciariasEditar).toHaveBeenCalled();
+  });
+
+  it("debe llamar a Plantilla.habilitarCamposEditables", function() {
+    Plantilla.editar();
+    expect(Plantilla.habilitarCamposEditables).toHaveBeenCalled();
+  });
+});
+
 
 
 
