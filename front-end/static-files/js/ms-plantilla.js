@@ -830,3 +830,38 @@ Plantilla.plantillaFormularioPersona.formulario1 = `
 `;
 
 
+
+
+
+
+
+/*FUNCIONES PARA HU9 */
+
+
+Plantilla.buscarCampos = function (search2) {
+    this.BuscaCampos(this.imprimeTodo,search2)
+}
+
+
+Plantilla.BuscaCampos = async function (callBackFn,dato) { 
+    let response = null
+  
+    // Intento conectar con el microservicio personas
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+  
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+  
+    // Muestro todas las persoans que se han descargado
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+        const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === dato ||  persona.data.apellidos === dato ||  persona.data.fecha_de_nacimiento.dia === dato ||  persona.data.fecha_de_nacimiento.mes === dato || persona.data.fecha_de_nacimiento.año === dato || persona.data.participaciones_en_competiciones_oficiales === dato)
+        callBackFn(filtro)
+    }
+}

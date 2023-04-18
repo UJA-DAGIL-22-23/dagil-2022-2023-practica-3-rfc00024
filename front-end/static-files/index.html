@@ -51,6 +51,19 @@
                     Plantilla.listarBuscador(searchTerm);
                 }
             </script>
+            <h1>Buscador de jugadores por varios campos</h1>
+            <form>
+                <label>Buscar por varios campos:</label>
+                <br/>
+                <input type="text" id="search2" name="search2">
+                <button type="button" onclick="buscarCampos()">Buscar</button>
+            </form>
+            <script>
+                function buscarCampos(){
+                    var searchTerm=document.getElementById("search2").value;
+                    Plantilla.buscarCampos(searchTerm);
+                }
+            </script>
         </nav>
 
     <!-- 
