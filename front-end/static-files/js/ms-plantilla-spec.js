@@ -658,6 +658,59 @@ describe('Plantilla.ModificarDatos', () => {
 
 
 
+describe("Plantilla.plantillaTablaPersonas.cabecera", function() {
+  it("Debería generar la cabecera de una tabla HTML con las columnas y encabezados correspondientes", function() {
+    const columnasEsperadas = [
+      "Id",
+      "nombre",
+      "apellidos",
+      "fecha_nacimiento",
+      "participaciones_comp_oficiales",
+      "participaciones_comp_internacional",
+      "numero_trofeos"
+    ];
+
+    const resultado = Plantilla.plantillaTablaPersonas.cabecera;
+
+    const cabeceraEsperada = `
+      <table width="100%" class="listado-proyectos">
+        <thead>
+          <tr>
+            ${columnasEsperadas.map(c => `<th>${c}</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>
+    `;
+  });
+
+  it("Debería incluir una etiqueta de cierre para la tabla HTML", function() {
+
+
+    const resultado = Plantilla.plantillaTablaPersonas.cabecera;
+
+    expect(resultado.endsWith("<tbody>")).toBe(true);
+  });
+
+  it("Debería tener una clase 'listado-proyectos'", function() {
+    
+
+    const resultado = Plantilla.plantillaTablaPersonas.cabecera;
+    expect(resultado.includes('class="listado-proyectos"')).toBe(true);
+  });
+
+  it("Debería tener una etiqueta <thead> y <tbody> en la estructura de la tabla HTML", function() {
+    
+  
+    const resultado = Plantilla.plantillaTablaPersonas.cabecera;
+
+  
+    expect(resultado.includes("<thead>")).toBe(true);
+    expect(resultado.includes("</thead>")).toBe(true);
+    expect(resultado.includes("<tbody>")).toBe(true);
+  });
+});
+
+
 
 
 
