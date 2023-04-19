@@ -446,7 +446,7 @@ En este incremento se ha realizado el desarrollo de las historias de usuario 12,
 
                         **HU 9**
 
-  ---------------------------Progress-----------------------------------------
+  ---------------------------Progress------------------------------------------
 
 <img src='/H9Progress.png' width='200px'>
 
