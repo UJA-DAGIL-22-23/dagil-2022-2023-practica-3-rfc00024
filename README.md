@@ -428,7 +428,7 @@ En este incremento se ha realizado el desarrollo de las historias de usuario 4, 
 
 
 
-En este incremento se ha realizado el desarrollo de las historias de usuario 1, 2 y 3 como se muestra a continuación. 
+En este incremento se ha realizado el desarrollo de las historias de usuario 12, 13 y 9 como se muestra a continuación. 
 
 
                         **HU 12 y 13**
