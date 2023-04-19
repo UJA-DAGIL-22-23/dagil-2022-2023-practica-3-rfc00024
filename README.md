@@ -425,3 +425,37 @@ En este incremento se ha realizado el desarrollo de las historias de usuario 4, 
 
 
 **Incremento 3**
+
+
+
+En este incremento se ha realizado el desarrollo de las historias de usuario 1, 2 y 3 como se muestra a continuación. 
+
+
+                        **HU 12 y 13**
+
+  ---------------------------Progress-----------------------------------------
+
+<img src='/H12Progress.png' width='200px'>
+
+
+<img src='/H13Progress.png' width='200px'>
+ ---------------------------Done-----------------------------------------
+
+<img src='/H12y13Done.png' width='200px'>
+
+
+                        **HU 9**
+
+  ---------------------------Progress-----------------------------------------
+
+<img src='/H9Progress.png' width='200px'>
+
+ ---------------------------Done-----------------------------------------
+
+<img src='/H9Done.png' width='200px'>
+
+
+
+
+
+
