@@ -328,3 +328,61 @@ En esta captura se muestran tanto los incrementos como sus distintas historias d
 <img src='/CapturaInicial.png' width='200px'>
 
 
+**Incremento 1**
+
+En este incremento se ha realizado el desarrollo de las historias de usuario 1, 2 y 3 como se muestra a continuación. 
+
+
+                        **HU 1**
+
+  ---------------------------Progress-----------------------------------------
+
+<img src='/H1Progress.png' width='200px'>
+
+ ---------------------------Done-----------------------------------------
+
+<img src='/H1Done.png' width='200px'>
+
+
+                        **HU 2**
+
+  ---------------------------Progress-----------------------------------------
+
+<img src='/H2Progress.png' width='200px'>
+
+ ---------------------------Done-----------------------------------------
+
+<img src='/H2Done.png' width='200px'>
+
+
+
+                        **HU 3**
+
+  ---------------------------Progress-----------------------------------------
+
+<img src='/H3Progress.png' width='200px'>
+
+ ---------------------------Done-----------------------------------------
+
+<img src='/H3Done.png' width='200px'>
+
+
+
+
+
+
+
+
+
+
+**Incremento 2**
+
+
+
+
+
+
+
+
+
+**Incremento 3**
